@@ -17,4 +17,9 @@ int main()
 
 //export LDFLAGS="-L/usr/local/Cellar/spdlog/1.4.2/include"
 
-//echo "deb http://dl.bintray.com/puffikru/otus-cpp xenial main" | tee -a /etc/apt/sources.list.d/otus.list
+//echo "deb http://dl.bintray.com/puffikru/otus-cpp xenial main" | tee -a /
+//
+// etc/apt/sources.list.d/otus.list
+
+
+//echo "deb https://dl.bintray.com/puffikru/otus-cpp xenial main" | sudo tee -a /etc/apt/sources.list
