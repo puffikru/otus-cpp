@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/bulakhigor/CLionProjects/otus-1/lib.h
+
+/Users/bulakhigor/CLionProjects/otus-1/main.cpp
+iostream
+-
+lib.h
+/Users/bulakhigor/CLionProjects/otus-1/lib.h
+
