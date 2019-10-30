@@ -89,6 +89,29 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -133,29 +156,6 @@ package: preinstall
 package/fast: package
 
 .PHONY : package/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/Applications/CLion.app/Contents/bin/cmake/mac/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -216,17 +216,17 @@ test_version/fast:
 .PHONY : test_version/fast
 
 #=============================================================================
-# Target rules for targets named helloworld_cli
+# Target rules for targets named helloworld_lib
 
 # Build rule for target.
-helloworld_cli: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 helloworld_cli
-.PHONY : helloworld_cli
+helloworld_lib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 helloworld_lib
+.PHONY : helloworld_lib
 
 # fast build rule for target.
-helloworld_cli/fast:
-	$(MAKE) -f CMakeFiles/helloworld_cli.dir/build.make CMakeFiles/helloworld_cli.dir/build
-.PHONY : helloworld_cli/fast
+helloworld_lib/fast:
+	$(MAKE) -f CMakeFiles/helloworld_lib.dir/build.make CMakeFiles/helloworld_lib.dir/build
+.PHONY : helloworld_lib/fast
 
 lib.o: lib.cpp.o
 
@@ -234,7 +234,7 @@ lib.o: lib.cpp.o
 
 # target to build an object file
 lib.cpp.o:
-	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/lib.cpp.o
+	$(MAKE) -f CMakeFiles/helloworld_lib.dir/build.make CMakeFiles/helloworld_lib.dir/lib.cpp.o
 .PHONY : lib.cpp.o
 
 lib.i: lib.cpp.i
@@ -243,7 +243,7 @@ lib.i: lib.cpp.i
 
 # target to preprocess a source file
 lib.cpp.i:
-	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/lib.cpp.i
+	$(MAKE) -f CMakeFiles/helloworld_lib.dir/build.make CMakeFiles/helloworld_lib.dir/lib.cpp.i
 .PHONY : lib.cpp.i
 
 lib.s: lib.cpp.s
@@ -252,7 +252,7 @@ lib.s: lib.cpp.s
 
 # target to generate assembly for a file
 lib.cpp.s:
-	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/lib.cpp.s
+	$(MAKE) -f CMakeFiles/helloworld_lib.dir/build.make CMakeFiles/helloworld_lib.dir/lib.cpp.s
 .PHONY : lib.cpp.s
 
 main.o: main.cpp.o
@@ -261,7 +261,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) -f CMakeFiles/helloworld_cli.dir/build.make CMakeFiles/helloworld_cli.dir/main.cpp.o
+	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -270,7 +270,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) -f CMakeFiles/helloworld_cli.dir/build.make CMakeFiles/helloworld_cli.dir/main.cpp.i
+	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -279,7 +279,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) -f CMakeFiles/helloworld_cli.dir/build.make CMakeFiles/helloworld_cli.dir/main.cpp.s
+	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 test_version.o: test_version.cpp.o
@@ -319,14 +319,14 @@ help:
 	@echo "... helloworld"
 	@echo "... list_install_components"
 	@echo "... edit_cache"
+	@echo "... install/local"
+	@echo "... test"
 	@echo "... rebuild_cache"
 	@echo "... package_source"
 	@echo "... test_version"
+	@echo "... helloworld_lib"
 	@echo "... install/strip"
 	@echo "... package"
-	@echo "... install/local"
-	@echo "... test"
-	@echo "... helloworld_cli"
 	@echo "... lib.o"
 	@echo "... lib.i"
 	@echo "... lib.s"
