@@ -8,7 +8,7 @@ Call Stack (most recent call first):
   /usr/local/lib/cmake/Boost-1.71.0/BoostConfig.cmake:117 (find_package)
   /usr/local/lib/cmake/Boost-1.71.0/BoostConfig.cmake:182 (boost_find_component)
   /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.15/Modules/FindBoost.cmake:443 (find_package)
-  CMakeLists.txt:6 (find_package)
+  CMakeLists.txt:12 (find_package)
 
 
 -- Configuring done

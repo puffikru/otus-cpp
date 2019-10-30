@@ -13,4 +13,8 @@ iostream
 -
 lib.h
 /Users/bulakhigor/CLionProjects/otus-1/lib.h
+spdlog/spdlog.h
+-
+spdlog/sinks/stdout_sinks.h
+-
 
