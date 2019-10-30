@@ -15,4 +15,6 @@ deploy:
   provider: script
   skip_cleanup: true
   script:
-    - curl -f -T helloworld-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -upuffikru:$BINARY_API_KEY https://api.bintray.com/content/puffikru/otus-cpp/otus-cpp/$TRAVIS_BUILD_NUMBER/helloworld-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=xenial;deb_component=main;deb_architecture=amd64;publish=1
+    - curl -f -T helloworld-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -upuffikru:$BINTRAY_API_KEY "https://api.bintray.com/content/puffikru/otus-cpp/homework/$TRAVIS_BUILD_NUMBER/helloworld-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=xenial;deb_component=main;deb_architecture=amd64;publish=1"
+#    - curl -f -T helloworld-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -upuffikru:$BINARY_API_KEY https://api.bintray.com/content/puffikru/otus-cpp/otus-cpp/$TRAVIS_BUILD_NUMBER/helloworld-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=xenial;deb_component=main;deb_architecture=amd64;publish=1
+#    - curl -f -T helloworld-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -upuffikru:$BINARY_API_KEY https://api.bintray.com/content/puffikru/otus-cpp/otus-cpp/$TRAVIS_BUILD_NUMBER/helloworld-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=xenial;deb_component=main;deb_architecture=amd64;publish=1
